@@ -1,0 +1,55 @@
+output_dir: '../outputs/no_cut/'
+plot_style: ['science', 'nature', 'no-latex']
+data:
+  datasets_path: '../datasets'
+  train_data_name: 'Momentum_phipipi_train.npy'
+  val_data_name: 'Momentum_phipipi_val.npy'
+  test_data_name: 'Momentum_phipipi_test.npy'
+  dtype: 'float32'
+  batch_size: 256 
+  epoch_iter_num: 2000
+  batch_event_num: 1024 
+  num_workers: 12 
+  pin_memory: True
+  latent_dim: 100
+  quantities_num: 8
+  train_size: 2000000 
+  distribution_transform: True 
+model:
+  embedding_num: 1024 
+  nhead: 8 
+  dff: 2048 
+  norm: 'ln'
+  activation: 'gelu'
+  num_layers: 6 
+  cut_index: null 
+  load_path: null 
+train:
+  device_id: '0' 
+  device: 'cuda:0'
+  epochs: 100
+  decay_num: 3
+  repeat_projector_num: 4 
+  projector_dim: 128
+  save_name: 'model.pt'
+  use_tensorboard: True
+  swd_type: 'SWD'
+  gamma: 0.
+  weight_gamma: 0 
+  weight_index: [4, 6, 8, 20, 22, 32, 33, 34, 36]
+  quantities_name: ['$p_x$ of $\phi$[$GeV/c$]', '$p_y$ of  $\phi$[$GeV/c$]', '$p_z$ of $\phi$[$GeV/c$]', '$E$ of $\phi$[$GeV$]', '$M_{\phi}$[$GeV/c^2$]', '$M_{\pi^+ \pi^-}$[$GeV/c^2$]', '$p_T$ of $\phi$[$GeV/c$]', '$p$ of $\phi$[$GeV/c$]', '$\theta$ of $\phi$', '$\phi$ of $\phi$', '$p_x$ of $\pi^+$[$GeV/c$]', '$p_y$ of $\pi^+$[$GeV/c$]', '$p_z$ of $\pi^+$[$GeV/c$]', '$E$ of $\pi^+$[$GeV$]', '$p_x$ of $\pi^-$[$GeV/c$]', '$p_y$ of $\pi^-$[$GeV/c$]', '$p_z$ of $\pi^-$[$GeV/c$]', '$E$ of $\pi^-$[$GeV$]', '$p_T$ of $\pi^-$[$GeV/c$]', '$p_T$ of $\pi^-$[$GeV/c$]', '$\theta$ of $\pi^+$', '$\phi$ of $\pi^+$', '$\theta$ of $\pi^-$', '$\phi$ of $\pi^-$', '$p_x$ of $K^+$[$GeV/c$]', '$p_y$ of $K^+$[$GeV/c$]', '$p_z$ of $K^+$[$GeV/c$]', '$E$ of $K^+$[$GeV$]', '$p_x$ of $K^-$[$GeV/c$]', '$p_y$ of $K^-$[$GeV/c$]', '$p_z$ of $K^-$[$GeV/c$]', '$E$ of $K_-$[$GeV$]', '$p_T$ of $K^+$[$GeV/c$]', '$p_T$ of $K^-$[$GeV/c$]', '$\theta$ of $K^+$', '$\phi$ of $K^+$', '$\theta$ of $K^-$', '$\phi$ of $K^-$']
+  random_choose_time: 100
+  plot_test_random_projection_num: 32
+optimizer:
+  name: 'adamw'
+  learning_rate: 0.00005
+  warmup: 0.05 
+  decay_type: 'consine_decay'
+  val_loss_decay_time: 3
+  decay_step: 3000
+  num_cycles: 38
+  beta_1: 0.9
+  beta_2: 0.999
+  epsilon: 0.00000001
+  weight_decay: 0.1
+seed: 42

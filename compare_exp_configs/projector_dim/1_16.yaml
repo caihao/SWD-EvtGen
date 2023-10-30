@@ -1,0 +1,109 @@
+data:
+  batch_event_num: 1024
+  batch_size: 256
+  datasets_path: ../datasets
+  distribution_transform: true
+  dtype: float32
+  epoch_iter_num: 2000
+  latent_dim: 100
+  num_workers: 12
+  pin_memory: true
+  quantities_num: 8
+  test_data_name: Momentum_phipipi_test.npy
+  train_data_name: Momentum_phipipi_train.npy
+  train_size: 2000000
+  val_data_name: Momentum_phipipi_val.npy
+model:
+  activation: gelu
+  cut_index:
+  - 20
+  - 22
+  - 34
+  - 36
+  dff: 2048
+  embedding_num: 1024
+  load_path: null
+  nhead: 8
+  norm: ln
+  num_layers: 6
+optimizer:
+  beta_1: 0.9
+  beta_2: 0.999
+  decay_step: 3000
+  decay_type: consine_decay
+  epsilon: 1.0e-08
+  learning_rate: 5.0e-05
+  name: adamw
+  num_cycles: 38
+  val_loss_decay_time: 3
+  warmup: 0.05
+  weight_decay: 0.1
+output_dir: ../outputs/compare_exp/projector_dim/1_16
+plot_style:
+- science
+- nature
+- no-latex
+seed: 42
+train:
+  decay_num: 3
+  device: cuda:0
+  device_id: '0'
+  epochs: 100
+  gamma: 0.1
+  plot_test_random_projection_num: 32
+  projector_dim: 16 
+  quantities_name:
+  - $p_x$ of $\phi$[$GeV/c$]
+  - $p_y$ of  $\phi$[$GeV/c$]
+  - $p_z$ of $\phi$[$GeV/c$]
+  - $E$ of $\phi$[$GeV$]
+  - $M_{\phi}$[$GeV/c^2$]
+  - $M_{\pi^+ \pi^-}$[$GeV/c^2$]
+  - $p_T$ of $\phi$[$GeV/c$]
+  - $p$ of $\phi$[$GeV/c$]
+  - $\theta$ of $\phi$
+  - $\phi$ of $\phi$
+  - $p_x$ of $\pi^+$[$GeV/c$]
+  - $p_y$ of $\pi^+$[$GeV/c$]
+  - $p_z$ of $\pi^+$[$GeV/c$]
+  - $E$ of $\pi^+$[$GeV$]
+  - $p_x$ of $\pi^-$[$GeV/c$]
+  - $p_y$ of $\pi^-$[$GeV/c$]
+  - $p_z$ of $\pi^-$[$GeV/c$]
+  - $E$ of $\pi^-$[$GeV$]
+  - $p_T$ of $\pi^-$[$GeV/c$]
+  - $p_T$ of $\pi^-$[$GeV/c$]
+  - $\theta$ of $\pi^+$
+  - $\phi$ of $\pi^+$
+  - $\theta$ of $\pi^-$
+  - $\phi$ of $\pi^-$
+  - $p_x$ of $K^+$[$GeV/c$]
+  - $p_y$ of $K^+$[$GeV/c$]
+  - $p_z$ of $K^+$[$GeV/c$]
+  - $E$ of $K^+$[$GeV$]
+  - $p_x$ of $K^-$[$GeV/c$]
+  - $p_y$ of $K^-$[$GeV/c$]
+  - $p_z$ of $K^-$[$GeV/c$]
+  - $E$ of $K_-$[$GeV$]
+  - $p_T$ of $K^+$[$GeV/c$]
+  - $p_T$ of $K^-$[$GeV/c$]
+  - $\theta$ of $K^+$
+  - $\phi$ of $K^+$
+  - $\theta$ of $K^-$
+  - $\phi$ of $K^-$
+  random_choose_time: 100
+  repeat_projector_num: 1
+  save_name: model.pt
+  swd_type: SWD
+  use_tensorboard: true
+  weight_gamma: 2
+  weight_index:
+  - 4
+  - 6
+  - 8
+  - 20
+  - 22
+  - 32
+  - 33
+  - 34
+  - 36
