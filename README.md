@@ -23,6 +23,8 @@ SWD-EvtGen is a deep learning-based event generator using Sliced Wasserstein Dis
    cd SWD-EvtGen
    ```
 
+2. Download the train dataset, val dataset and test dataset from https://zenodo.org/records/10066889. And putting into './datasets'
+
 ### Train
 
 Train the model using standard config:
@@ -37,5 +39,5 @@ You can replace the standard configs into other configs, or just modify paramete
 
 - [ ] More visualization of SWD in Physics
 - [ ] Additional supportive results
-- [ ] Download link for the dataset and complete results in control experiment
+- [x] Download link for the dataset and complete results in control experiment
 - [x] Write usage guides.
